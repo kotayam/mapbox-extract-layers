@@ -1,1 +1,5 @@
 out/*
+*.json
+!sample_input.json
+*.txt
+!sample_source_layers.txt

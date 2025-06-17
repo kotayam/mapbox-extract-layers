@@ -16,7 +16,7 @@ def extract_matching_layers(input_json, source_layer_file, output_json):
         data = json.load(f)
     
     if "layers" in data and isinstance(data["layers"], list):
-        filtered_layers = [layer for layer in data["layers"] if layer.get("id") in target_src_layers]
+        filtered_layers = [layer for layer in data["layers"] if layer.get("source-layer") in target_src_layers]
         data["layers"] = filtered_layers
     else:
         print("Warning: No 'layers' list found in input JSON.")
