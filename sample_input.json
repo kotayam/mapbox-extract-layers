@@ -1,11 +1,11 @@
 {
   "version": 8,
-  "name": "Mapbox model tileset v8",
+  "name": "Mapbox tileset",
   "sources": {
     "mapbox-streets": {
       "type": "vector",
       "tiles": [
-        "https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token="
+        "https://api.mapbox.com/sample/{z}/{x}/{y}.vector.pbf"
       ]
     }
   },
