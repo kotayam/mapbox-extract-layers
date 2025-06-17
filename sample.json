@@ -1,0 +1,84 @@
+{
+  "version": 8,
+  "name": "Mapbox model tileset v8",
+  "sources": {
+    "mapbox-streets": {
+      "type": "vector",
+      "tiles": [
+        "https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token="
+      ]
+    }
+  },
+  "layers": [
+    {
+      "id": "building",
+      "source": "mapbox-streets",
+      "source-layer": "building",
+      "type": "fill",
+      "paint": {
+        "fill-color": "#000000"
+      }
+    },
+    {
+      "id": "road",
+      "source": "mapbox-streets",
+      "source-layer": "road",
+      "type": "line",
+      "paint": {
+        "line-color": "#ffffff",
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5, [
+            "match",
+            ["get", "class"],
+            "motorway", 2,
+            "primary", 1.5,
+            "secondary", 1,
+            "tertiary", 0.8,
+            "street", 0.5,
+            0.2
+          ],
+          15, [
+        "match",
+        ["get", "class"],
+        "motorway", 20,
+        "primary", 16,
+        "secondary", 12,
+        "tertiary", 8,
+        "street", 4,
+        2
+      ]
+        ]
+      }
+    },
+    {
+      "id": "structure",
+      "source": "mapbox-streets",
+      "source-layer": "structure",
+      "type": "fill",
+      "paint": {
+        "fill-color": "#000000"
+      }
+    },
+    {
+      "id": "water",
+      "source": "mapbox-streets",
+      "source-layer": "water",
+      "type": "fill",
+      "paint": {
+        "fill-color": "rgb(66,100,251)"
+      }
+    },
+    {
+      "id": "waterway",
+      "source": "mapbox-streets",
+      "source-layer": "waterway",
+      "type": "line",
+      "paint": {
+        "line-color": "rgb(66,100,251)"
+      }
+    }
+ ]
+}
