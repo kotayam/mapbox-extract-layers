@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
+import os
 import json
+
+OUTPUT_DIR = "out/"
 
 def load_source_layers(source_layer_file):
     with open(source_layer_file, 'r') as f:
@@ -7,7 +10,7 @@ def load_source_layers(source_layer_file):
 
 def extract_matching_layers(input_json, source_layer_file, output_json):
     target_src_layers = load_source_layers(source_layer_file)
-    print(target_src_layers)
+    print(f"Log: layers to be extracted = {target_src_layers}")
     
     with open(input_json, 'r') as f:
         data = json.load(f)
@@ -19,12 +22,14 @@ def extract_matching_layers(input_json, source_layer_file, output_json):
         print("Warning: No 'layers' list found in input JSON.")
         return
 
-    output_path = "out/" + output_json
+    os.makedirs(os.path.dirname(OUTPUT_DIR), exist_ok=True)
+
+    output_path = OUTPUT_DIR + output_json
 
     with open(output_path, 'w') as f:
         json.dump(data, f, indent=2)
     
-    print(f"Filtered JSON written to {output_path}")
+    print(f"Success: filtered JSON written to {output_path}")
 
 if __name__ == "__main__":
     import argparse
